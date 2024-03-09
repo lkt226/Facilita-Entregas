@@ -1,0 +1,21 @@
+.actions {
+    @apply col-span-2;
+    @apply flex flex-col gap-6 justify-between items-center;
+}
+
+.client-list {
+    @apply col-span-3;
+    @apply flex flex-col gap-4;
+}
+
+@media screen and (max-width: 768px) {
+  .actions {
+    @apply col-span-1;
+    @apply flex-col-reverse;
+  }
+
+  .client-list {
+    @apply col-span-1;
+    @apply row-start-1;
+  }
+}

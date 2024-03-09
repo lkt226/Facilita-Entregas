@@ -1,0 +1,4 @@
+.form-edit-client {
+    @apply flex flex-col gap-6;
+    @apply w-full;
+}

@@ -1,0 +1,12 @@
+:root {
+    --global-padding-x: 5rem;
+    --global-padding-y: 5rem;
+    --container-max-width: 70rem;
+
+    --header-height: 2.5rem;
+    --footer-height: 1.5rem;
+}
+
+button {
+    @apply uppercase;
+}

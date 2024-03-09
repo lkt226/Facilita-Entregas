@@ -1,0 +1,37 @@
+#body {
+    @apply min-h-screen;
+    @apply grid;
+    @apply grid-rows-[auto,1fr,auto];
+    @apply overflow-hidden;
+
+    #header {
+        @apply h-[var(--header-height)];
+        @apply flex items-center justify-center;
+        @apply bg-gray-100;
+        @apply uppercase;
+    }
+    
+    #main {
+        @apply py-[var(--global-padding-y)];
+        @apply grid grid-cols-5 gap-12;
+        @apply h-full;
+        @apply mx-auto max-w-[var(--container-max-width)];
+    }
+    
+    #footer {
+        @apply h-[var(--footer-height)];
+        @apply flex items-center justify-center;
+        @apply bg-gray-100;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #body {
+      @apply overflow-y-auto;
+
+      #main {
+          @apply grid-cols-1;
+          @apply p-5;
+      }
+    }
+}

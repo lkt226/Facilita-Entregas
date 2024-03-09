@@ -1,0 +1,32 @@
+.default-form {
+  @apply grid grid-cols-2 gap-4;
+  
+  label {
+      @apply flex flex-col gap-2;
+  }
+  
+  .email, 
+  .coordinates {
+      @apply col-span-2;
+  }
+  
+  button {
+      @apply col-span-2 mt-4;
+  }
+
+  .coordinates {
+      @apply flex flex-col gap-4;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .default-form {
+    @apply grid-cols-1;
+
+    .email,
+    .coordinates,
+    button {
+      @apply col-span-1;
+    }
+  }
+}
