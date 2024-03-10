@@ -11,28 +11,22 @@
     bem menos eficiente 😁.
 */
 
-type User = {
-    id: number;
-    name: string;
-    email: string;
-    telphone: string;
-    coordinates: number[];
-}
+import { UserType } from "../../models/UserModel";
 
 const searchDistance = (coordinates1: number[], coordinates2: number[]) => {
     return Math.sqrt(Math.pow(coordinates2[0] - coordinates1[0], 2) + Math.pow(coordinates2[1] - coordinates1[1], 2));
 }
 
-export const orderUsersByCoordinates = (company: User, users: User[]) => {
-    const negativeNegative:User[] = [];
-    const negativePositive:User[] = [];
-    const positivePositive:User[] = [];
-    const positiveNegative:User[] = [];
+export const orderUsersByCoordinates = (company: UserType, users: UserType[]) => {
+    const negativeNegative:UserType[] = [];
+    const negativePositive:UserType[] = [];
+    const positivePositive:UserType[] = [];
+    const positiveNegative:UserType[] = [];
 
     const trajectories = [company]
 
     let temp: {
-        user: User|null,
+        user: UserType|null,
         distance: number
     } = {
         user: null,
@@ -54,7 +48,7 @@ export const orderUsersByCoordinates = (company: User, users: User[]) => {
     });
 
     // Calcula a distância todas as coordenadas do mesmo "setor" e adiciona a "trajetoria" a mais próxima.
-    const calculeAllList = (list: User[]) => {
+    const calculeAllList = (list: UserType[]) => {
         list.forEach(_ => {
             list.forEach(user=> {
                 if (trajectories.includes(user)) return;

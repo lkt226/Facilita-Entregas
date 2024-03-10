@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
 import { orderUsersByCoordinates } from './calcule';
-
-const prisma = new PrismaClient();
+import userOperations from '../../database/operations/user';
 
 export const calculeTrajectory = async (req: Request, res: Response) => {
   const { usersIds } = req.body;
@@ -11,29 +9,19 @@ export const calculeTrajectory = async (req: Request, res: Response) => {
     return res.status(400).json({ message: 'Nenhum usuário informado' });
   }
 
-  const users = await prisma.user.findMany({
-    where: {
-      id: {
-        in: usersIds
-      }
-    }
-  });
+  const users = await userOperations.getByMultipleIds(usersIds)
 
   /*
     Aqui poderia ser usado o ID da empresa, sendo ela o primeiro usuário criado 
     no Banco de Dados ou se fosse uma aplicação real.
   */
-  const company = await prisma.user.findFirst({
-    where: {
-      email: 'facilita@gmail.com',
-    }
-  });
+  const company = await userOperations.getUniqueByEmail('facilita@gmail.com')
 
   if (!company) {
     return res.status(400).json({ message: 'Empresa não encontrada' });
   }
 
-  const orderedUsers = orderUsersByCoordinates(company, users);
+  const orderedUsers = orderUsersByCoordinates(company[0], users);
 
   res.json(orderedUsers);
 };

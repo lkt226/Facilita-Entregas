@@ -1,30 +1,28 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import userOperations from '../database/operations/user';
 
 export const getAllUsers = async (_req: Request, res: Response) => {
-  const users = await prisma.user.findMany();
+  const users = await userOperations.getAll()
   res.json(users);
 };
 
 export const getUserById = async (req: Request, res: Response) => {
   const userId = parseInt(req.params.id, 10);
-  const user = await prisma.user.findUnique({ where: { id: userId } });
+  const userExists = await userOperations.getUniqueById(userId)
 
-  if (!user) {
+  if (userExists.length === 0) {
     return res.status(404).json({ message: 'Usuário não existe' });
   }
 
-  res.json(user);
+  res.json(userExists);
 }
 
 export const createUser = async (req: Request, res: Response) => {
   const { name, email, telphone, coordinates } = req.body;
 
-  const userExists = await prisma.user.findFirst({ where: { email } });
+  const userExists = await userOperations.getUniqueByEmail(email)
 
-  if (userExists) {
+  if (userExists.length > 0) {
     return res.status(400).json({ message: 'Usuário já existe' });
   }
 
@@ -32,7 +30,7 @@ export const createUser = async (req: Request, res: Response) => {
     return typeof coordinate === 'string' ? parseFloat(coordinate) : coordinate;
   })
 
-  const user = await prisma.user.create({ data: { name, email, telphone, coordinates: parsedCoordinates } });
+  const user = await userOperations.create(name, email, telphone, parsedCoordinates)
 
   if (!user) {
     return res.status(500).json({ message: 'Erro ao criar usuário' });
@@ -45,9 +43,9 @@ export const updateUser = async (req: Request, res: Response) => {
   const userId = parseInt(req.params.id, 10);
   const { name, email, telphone, coordinates } = req.body;
 
-  const user = await prisma.user.findUnique({ where: { id: userId } });
+  const userExists = await userOperations.getUniqueById(userId)
 
-  if (!user) {
+  if (userExists.length === 0) {
     return res.status(404).json({ message: 'Usuário não existe' });
   }
 
@@ -55,10 +53,7 @@ export const updateUser = async (req: Request, res: Response) => {
     return typeof coordinate === 'string' ? parseFloat(coordinate) : coordinate;
   })
 
-  const updatedUser = await prisma.user.update({
-    where: { id: userId },
-    data: { name, email, telphone, coordinates: parsedCoordinates},
-  });
+  const updatedUser = await userOperations.update(userId, name, email, telphone, parsedCoordinates)
 
   res.json(updatedUser);
 };
@@ -66,12 +61,13 @@ export const updateUser = async (req: Request, res: Response) => {
 export const deleteUser = async (req: Request, res: Response) => {
   const userId = parseInt(req.params.id, 10);
 
-  const user = await prisma.user.findUnique({ where: { id: userId } });
+  const userExists = await userOperations.getUniqueById(userId)
 
-  if (!user) {
+  if (userExists.length === 0) {
     return res.status(404).json({ message: 'Usuário não existe' });
   }
-
-  await prisma.user.delete({ where: { id: userId } });
+  
+  await userOperations.delete(userId)
+  
   res.json({ message: 'Usuário deletado com sucesso' });
 };
