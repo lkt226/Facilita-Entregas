@@ -1,0 +1,24 @@
+.dialog {
+  .form-edit-client {
+      @apply flex flex-col gap-6;
+      @apply w-full;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .dialog {
+    @apply w-[100vw] h-[100vh];
+    
+    >* {
+      @apply text-left;
+    }
+
+    .form-edit-client {
+      @apply overflow-y-auto;
+      
+      form {
+        @apply mt-7;
+      }
+    }
+  }
+}

@@ -1,8 +1,0 @@
-.content {
-  @apply grid grid-cols-3 gap-12;
-}
-
-/* -> O root da "table" no ShadCN/UI não é realmente o root 😁 */
-.content >*:nth-child(1) {
-  @apply col-span-2;
-}

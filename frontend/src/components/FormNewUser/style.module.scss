@@ -1,0 +1,14 @@
+.form-new-client {
+  @apply flex flex-col gap-6;
+  @apply w-full;
+
+  h1 {
+    @apply text-2xl font-bold;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .form-new-client h1 {
+    @apply text-lg;
+  }
+}

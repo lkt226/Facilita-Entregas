@@ -1,0 +1,44 @@
+.dialog {
+  @apply max-w-[90vw];
+
+  .content {
+    @apply grid grid-cols-3 gap-12;
+    @apply h-[80vh];
+  
+    /* -> O root da "table" no ShadCN/UI não é realmente o root 😁 */
+    >*:nth-child(1) {
+      @apply col-span-2;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1150px) {
+  .trigger {
+    @apply mb-6;
+  }
+
+  .dialog {
+    @apply max-w-[100vw] h-[100vh];
+    grid-template-rows: auto 1fr;
+
+    >* {
+      @apply text-left;
+    }
+
+    .content {
+      @apply grid-cols-1 overflow-auto;
+      @apply h-full;
+  
+      >*{
+        &:not(&:nth-child(1)) {
+          @apply hidden;
+        }
+
+        &:nth-child(1) {
+          @apply col-span-1;
+        }
+      }
+    }
+  }
+}
