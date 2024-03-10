@@ -1,5 +1,8 @@
-# facilita*juridico*test
+# facilita juridico test
  Teste para vaga de emprego da "Facilita Juridico"
+
+## Video de apresentação
+[https://www.youtube.com/watch?v=Vo8FAw83RUU](https://www.youtube.com/watch?v=Vo8FAw83RUU)
 
 ## Tecnologias
 
@@ -25,7 +28,7 @@
     * npm run start
     * vai iniciar no http://localhost:5000
 
-3. Front*end:
+3. front-end:
     * cd frontend
     * npm run install
     * npm run dev
@@ -46,7 +49,7 @@ CREATE TABLE users (
 ## Escolha de técnologia.
  
  ### Utilizei para o front-end React, Next.js, TailwindCSS, Scss, ShadCN/UI, Leaflet, Redux e Ludice Icons.
-* React: foi a tecnologia pedida nas instruções para o front*end.
+* React: foi a tecnologia pedida nas instruções para o front-end.
 * Next.js: foi usado para agilizar o processo de desenvolvimento, mas ele tambem seria útil se fosse um projeto real para poder usar o SSR nas listas por exemplo.
 * TailwindCSS: eu adiciono como Core em praticamente todo projeto, ele facilita muito a parte de "design".
 * Scss: eu adicionei o final do projeto para facilitar a leitura do CSS na parte de responsividade.
@@ -61,7 +64,7 @@ CREATE TABLE users (
 
  ### E para o banco de dados foi usado o Postgres e Docker. 
 * Postgres: foi a tecnologia pedida nas instruções para o banco de dados.
-* Docker: foi utilizado porque acho mais fácil de instalar o Postgres no docker que configurar na maquina (caso dê tempo vou "dockerizar" o front*end e o backend tambem).
+* Docker: foi utilizado porque acho mais fácil de instalar o Postgres no docker que configurar na maquina (caso dê tempo vou "dockerizar" o front-end e o backend tambem).
 
 ## Possiveis Melhorias
 * Adicionar um storybook para fazer a documentação do frontend.
