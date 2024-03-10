@@ -1,6 +1,6 @@
 :root {
     --global-padding-x: 5rem;
-    --global-padding-y: 5rem;
+    --global-padding-y: 2rem;
     --container-max-width: 70rem;
 
     --header-height: 2.5rem;
@@ -9,4 +9,16 @@
 
 button {
     @apply uppercase;
+}
+
+@media screen and (max-width: 1150px) {
+    :root {
+        --container-max-width: 600px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --container-max-width: 100vw;
+    }
 }

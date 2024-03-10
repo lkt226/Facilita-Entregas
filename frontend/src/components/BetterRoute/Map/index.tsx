@@ -13,6 +13,10 @@ const defaultIcon = new Icon({
  iconUrl: '/marker.png',
  iconSize: [24,24]
 })
+const HomeIcon = new Icon({
+ iconUrl: '/marker-home.png',
+ iconSize: [28,28]
+})
 
 export default function FakeMap () {
   const { loading, data: usersList, error } = useSelector((state: RootState) => state.client.orderedUsersList)
@@ -23,7 +27,7 @@ export default function FakeMap () {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (mapRef.current) {
-        mapRef.current.setView([sorocaba[0], sorocaba[1]], 11);
+        mapRef.current.setView([sorocaba[0], sorocaba[1]], 5);
       }
     }
   }, []);
@@ -31,10 +35,10 @@ export default function FakeMap () {
   return (
     <>
       {
-        typeof window !== 'undefined' && (
+        typeof window !== 'undefined' ? (
           <MapContainer
             center={[sorocaba[0], sorocaba[1]]}
-            zoom={11}
+            zoom={5}
             style={{ width: '100%', height: '100%' }}
           >
             
@@ -46,7 +50,7 @@ export default function FakeMap () {
                     (user.coordinates[0] + sorocaba[0]), 
                     (user.coordinates[1] + sorocaba[1])
                   ]} 
-                  icon={defaultIcon}
+                  icon={index === 0 ? HomeIcon : defaultIcon}
                 >
                   <Popup>{ user.name } - { user.telphone }</Popup>
                 </Marker>
@@ -57,7 +61,7 @@ export default function FakeMap () {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
           </MapContainer>
-        )
+        ) : <p>carregando ...</p>
       }
     </>
   )

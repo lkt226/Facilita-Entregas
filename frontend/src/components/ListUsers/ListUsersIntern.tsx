@@ -61,7 +61,7 @@ export default function ListUsersIntern() {
                 <TableCell>{user.telphone}</TableCell>
                 <TableCell className="flex gap-2 justify-end">
                   <EditAction user={user} />
-                  <DeleteAction id={user.id} />
+                  <DeleteAction user={user} />
                 </TableCell>
               </TableRow>
             ))

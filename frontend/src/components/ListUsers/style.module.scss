@@ -1,0 +1,17 @@
+.list-container {
+  @apply w-full h-full;
+  @apply rounded-md border;
+  @apply p-4;
+  @apply relative;
+
+  >* {
+    @apply absolute left-0 top-0;
+    @apply w-full h-full;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .list-container {
+    @apply min-h-[50vh];
+  }
+}

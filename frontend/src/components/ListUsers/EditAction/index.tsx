@@ -1,6 +1,6 @@
 'use client';
 
-import css from './style.module.css'
+import css from './style.module.scss'
 
 import { PostUser, GetUser } from '@/assets/data/types';
 
@@ -22,6 +22,7 @@ import {
 
 import DefaultForm from '@/components/DefaultForm';
 import { FilePenLine } from "lucide-react"
+import { useToast } from '@/components/ui/use-toast';
 
 interface Props {
   user: GetUser;
@@ -30,6 +31,7 @@ interface Props {
 export default function EditAction({ user }: Props) {
   const dispatch:RootDispatch = useDispatch()
   const [open, setOpen] = useState(false)
+  const { toast } = useToast()
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -49,8 +51,17 @@ export default function EditAction({ user }: Props) {
       dispatch(refreshUserList())
       form.reset()
       setOpen(false)
+      toast({
+        title: 'Usuário alterado com sucesso!',
+        description: `Você alterou o usuário com email: ${data.email}`
+      })
     }).catch((error) => {
       console.error(error)
+      toast({
+        title: 'Ocorreu um erro!',
+        description: error.message,
+        variant: 'destructive'
+      })
     })
   }
 
@@ -59,7 +70,7 @@ export default function EditAction({ user }: Props) {
       <DialogTrigger asChild>
         <button><FilePenLine/></button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className={css["dialog"]}>
         <DialogHeader>
           <DialogTitle>
             Você está editando o usuário { user.email }

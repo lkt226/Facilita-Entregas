@@ -1,6 +1,6 @@
 'use client';
 
-import css from './style.module.css'
+import css from './style.module.scss'
 
 import {
     Dialog,
@@ -48,12 +48,12 @@ export default function BetterRoute() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" onClick={handleBetterRoute}>
+        <Button className={css["trigger"]} variant="outline" onClick={handleBetterRoute}>
           Visualizar melhor rota
         </Button>
       </DialogTrigger>
       
-      <DialogContent className="max-w-[80vw]">
+      <DialogContent className={css["dialog"]}>
         <DialogHeader>
           <DialogTitle>
             Melhor Rota

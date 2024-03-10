@@ -18,17 +18,25 @@ import {
 } from "@/components/ui/alert-dialog"
 
 import { Trash } from "lucide-react"
+import { GetUser } from "@/assets/data/types";
+import { useToast } from "@/components/ui/use-toast";
 
 interface Props {
-  id: number;
+  user: GetUser;
 }
 
-export default function DeleteAction({ id }: Props) {
+export default function DeleteAction({ user }: Props) {
   const dispatch:RootDispatch = useDispatch()
+  const { toast } = useToast()
 
   const handleDelete = () => {
-    routes.users.delete(id).then(() => {
+    routes.users.delete(user.id).then(() => {
       dispatch(refreshUserList())
+      toast({
+        title: 'Usuário deletado',
+        description: `Você deletou o usuário de email: ${user.email}`,
+        variant: 'destructive'
+      })
     }).catch((error) => {
       console.error(error)
     })

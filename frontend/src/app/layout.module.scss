@@ -12,10 +12,11 @@
     }
     
     #main {
-        @apply py-[var(--global-padding-y)];
+        // @apply py-[var(--global-padding-y)];
         @apply grid grid-cols-5 gap-12;
-        @apply h-full;
-        @apply mx-auto max-w-[var(--container-max-width)];
+        @apply items-center;
+        @apply mx-auto my-auto;
+        @apply h-max max-h-full w-full max-w-[var(--container-max-width)];
     }
     
     #footer {
@@ -25,13 +26,21 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1150px) {
     #body {
       @apply overflow-y-auto;
 
       #main {
-          @apply grid-cols-1;
+          @apply flex flex-col;
           @apply p-5;
+      }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #body {
+      #main {
+          @apply flex-col-reverse;
       }
     }
 }

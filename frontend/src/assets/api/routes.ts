@@ -1,6 +1,6 @@
 import { PostUser } from "../data/types";
 
-const baseURL = 'http://localhost:5000/api';
+const baseURL = process.env.BASE_URL_API
 
 const headers = new Headers();
 headers.append("Content-Type", "application/json");
