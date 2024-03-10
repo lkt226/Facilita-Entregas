@@ -45,7 +45,7 @@ CREATE TABLE users (
 
 ## Escolha de técnologia.
  
- ### Utilizei para o front*end React, Next.js, TailwindCSS, Scss, ShadCN/UI, Leaflet, Redux e Ludice Icons.
+ ### Utilizei para o front-end React, Next.js, TailwindCSS, Scss, ShadCN/UI, Leaflet, Redux e Ludice Icons.
 * React: foi a tecnologia pedida nas instruções para o front*end.
 * Next.js: foi usado para agilizar o processo de desenvolvimento, mas ele tambem seria útil se fosse um projeto real para poder usar o SSR nas listas por exemplo.
 * TailwindCSS: eu adiciono como Core em praticamente todo projeto, ele facilita muito a parte de "design".
