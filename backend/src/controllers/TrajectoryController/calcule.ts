@@ -1,8 +1,6 @@
 /*
-    Aqui eu não tenho certeza se eu posso usar uma biblioteca
-    para "resolver" o "Problema do Caixeiro Viajante", e não consegui
-    entrar em contato, no linkedin só pode entrar em contato com a 
-    "Lucida Dias" quem usa o Linkedin Premium.
+    Aqui a Lucila Dias disse que pode usar uma biblioteca, mas que a ideia
+    é testar a lógica e eu já tinha feito a 'mão' de toda forma.
     
     Se puder eu usaria o "https://openrouteservice.org/" que é OpenSource 
     e Gratuito ou o do Google Maps mas nesse caso é pago.
