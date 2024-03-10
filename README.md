@@ -19,7 +19,7 @@
 
 1. Postgres
     * cd backend
-    * docker*compose up
+    * docker-compose up
     * vai iniciar no http://localhost:5432
 
 2. Backend
@@ -73,4 +73,4 @@ CREATE TABLE users (
 * Modificar o mapa falso para os pontos ficarem mais perto uns dos outros.
 * Adicionar mascaras nos campos de telefone
 * Permitir numeros quebrados para o X e Y.
-* Teria usado o Prisma no Backend mas tava proibido nas regras.
+* Teria usado o Prisma no Backend mas estava proibido nas regras.
