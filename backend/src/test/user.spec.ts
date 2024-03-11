@@ -1,14 +1,13 @@
 import supertest from 'supertest';
-import app from '../src/index';
+import app from '../index';
 
-import { getAllUsers, getUserById, createUser, updateUser, deleteUser } from '../src/controllers/UserController'
-import { PrismaClient } from '@prisma/client';
+import { getAllUsers, getUserById, createUser, updateUser, deleteUser } from '../controllers/UserController'
 
 jest.mock('../src/controllers/UserController');
-const prisma = new PrismaClient();
 
 describe('Get users tests', () => {
-  it('should get users', async () => {
+  it(
+    'should get users', async () => {
     const mockUsers = [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }];
 
     (getAllUsers as jest.Mock).mockImplementation(async (req, res) => {
