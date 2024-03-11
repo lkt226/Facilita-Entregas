@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && dotenv -e .env cp .env ./dist/",
+    "build": "tsc",
     "start": "ts-node src/index.ts",
     "start:prod": "node dist/index.js",
     "test": "jest"
