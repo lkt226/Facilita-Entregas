@@ -14,12 +14,13 @@ import {
 
 import { useSelector } from "react-redux"
 import { RootState } from "@/app/store"
+import masking from '@/assets/utils/masking';
 
 export default function ListUsersIntern() {
   const { loading, data, error } = useSelector((state: RootState) => state.client.orderedUsersList)
   
   const usersList = data.map((user) => {
-    const telphone = user.telphone.replace(/(\d{2})(\d{4,5})(\d{4})/, '($1) $2-$3')
+    const telphone = masking.telphone(user.telphone)
     return { ...user, telphone}
   })
 

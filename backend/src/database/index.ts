@@ -5,7 +5,7 @@ export const createDatabase = async (databaseName: string) => {
   client.connect()
 
   try {
-      const databases = await databaseOperations.showDatabases()
+      const databases = await databaseOperations.showDatabases();
       const databaseExists = databases.some(db => db.datname === databaseName);
 
       if (databaseExists) {

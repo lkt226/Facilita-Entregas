@@ -2,10 +2,15 @@
 
 import css from './style.module.scss'
 
+import { useState } from 'react';
+
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { GetUser } from '@/assets/data/types';
+import PhoneInput from 'react-phone-input-2'
+
+import 'react-phone-input-2/lib/style.css'
 
 interface Props {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
@@ -14,15 +19,37 @@ interface Props {
 }
 
 export default function DefaultForm (props: Props) {
+  const [telValue, setTelValue] = useState(props.user?.telphone)
+
+  const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
+    setTelValue(props.user?.telphone)
+    return props.onSubmit(event)
+  }
+
   return (
-    <form className={css["default-form"]} onSubmit={props.onSubmit}>
+    <form className={css["default-form"]} onSubmit={onSubmit}>
         <Label htmlFor="username">
             <span>Nome</span>
             <Input id="username" type="text" placeholder="Nome do seu cliente" defaultValue={props.user?.name} required />
         </Label>
-        <Label htmlFor="telphone">
+        <Label htmlFor="telphone" className='relative'>
             <span>Telefone</span>
-            <Input id="telphone" type="tel" placeholder="Telefone do seu cliente" defaultValue={props.user?.telphone} maxLength={11} required />
+            <input 
+              id="telphone" 
+              required 
+              pattern="^(\+[0-9]{1,4})?[0-9]{10,}$"
+              minLength={12}
+              value={telValue}
+              className='absolute opacity-0 pointer-events-none w-full h-full'
+            />
+            <PhoneInput 
+              containerClass={css["telphone-container"]} 
+              buttonClass={css["telphone-button"]}
+              inputClass={css["telphone-input"]} 
+              country={'br'} 
+              value={telValue}
+              onChange={setTelValue}
+            />
         </Label>
         <Label className={css["email"]} htmlFor="email">
             <span>E-mail</span>

@@ -1,6 +1,7 @@
 // import company from '@/assets/data';
 import routes from '@/assets/api/routes';
 import { GetUser } from '@/assets/data/types';
+import masking from '@/assets/utils/masking';
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
@@ -23,7 +24,7 @@ export const refreshUserList = createAsyncThunk('users/refreshUserList', async (
   const users: GetUser[] = await usersResponse.json()
 
   const organizedUsers = users.map((user) => {
-    const telphone = user.telphone.replace(/(\d{2})(\d{4,5})(\d{4})/, '($1) $2-$3')
+    const telphone = masking.telphone(user.telphone)
     return { ...user, telphone}
   })
 
