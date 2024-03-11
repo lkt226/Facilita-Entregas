@@ -25,44 +25,36 @@ export default function FakeMap () {
   const sorocaba = [-23.4969, -47.4558]
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (mapRef.current) {
-        mapRef.current.setView([sorocaba[0], sorocaba[1]], 5);
-      }
+    if (mapRef.current) {
+      mapRef.current.setView([sorocaba[0], sorocaba[1]], 5);
     }
   }, []);
 
   return (
-    <>
+    <MapContainer
+      center={[sorocaba[0], sorocaba[1]]}
+      zoom={5}
+      style={{ width: '100%', height: '100%' }}
+    >
+      
       {
-        typeof window !== 'undefined' ? (
-          <MapContainer
-            center={[sorocaba[0], sorocaba[1]]}
-            zoom={5}
-            style={{ width: '100%', height: '100%' }}
+        usersList.map((user, index) => (
+          <Marker 
+            key={user.email} 
+            position={[
+              (user.coordinates[0] + sorocaba[0]), 
+              (user.coordinates[1] + sorocaba[1])
+            ]} 
+            icon={index === 0 ? HomeIcon : defaultIcon}
           >
-            
-            {
-              usersList.map((user, index) => (
-                <Marker 
-                  key={user.email} 
-                  position={[
-                    (user.coordinates[0] + sorocaba[0]), 
-                    (user.coordinates[1] + sorocaba[1])
-                  ]} 
-                  icon={index === 0 ? HomeIcon : defaultIcon}
-                >
-                  <Popup>{ user.name } - { user.telphone }</Popup>
-                </Marker>
-              ))
-            }
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
-          </MapContainer>
-        ) : <p>carregando ...</p>
+            <Popup>{ user.name } - { user.telphone }</Popup>
+          </Marker>
+        ))
       }
-    </>
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      />
+    </MapContainer>
   )
 }

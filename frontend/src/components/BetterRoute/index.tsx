@@ -16,10 +16,11 @@ import { Button } from "@/components/ui/button"
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState, RootDispatch } from '@/app/store'
 import { setOrderedUsersList } from '@/features/client/usersSlice';
+import dynamic from "next/dynamic"
 
 import OrderedUsersList from './OrderedUsersList'
 import routes from '@/assets/api/routes'
-import Map from './Map';
+const Map = dynamic(() => import("./Map"), { ssr:false })
   
 export default function BetterRoute() {
   const { data: users } = useSelector((state: RootState) => state.client.allUsersList)
