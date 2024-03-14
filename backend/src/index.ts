@@ -24,7 +24,7 @@ app.use('/api/trajectory', trajectoryRoutes);
 populate()
 
 app.listen(port, () =>
-  console.log('REST API Rodando no link: http://localhost:'+port),
+  console.log('REST API Rodando no link: http://localhost:' + port),
 )
 
 
