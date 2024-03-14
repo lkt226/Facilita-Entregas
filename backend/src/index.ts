@@ -6,7 +6,6 @@ import helmet from 'helmet';
 import userRoutes from './routes/userRoutes';
 import trajectoryRoutes from './routes/trajectoryRoutes';
 
-import errorMiddleware from './middlewares/errorMiddleware';
 import populate from './database/populate';
 
 dotenv.config();
@@ -23,9 +22,6 @@ app.use('/api/users', userRoutes);
 app.use('/api/trajectory', trajectoryRoutes);
 
 populate()
-
-// Middleware global para tratamento de erros
-app.use(errorMiddleware);
 
 app.listen(port, () =>
   console.log('REST API Rodando no link: http://localhost:'+port),
