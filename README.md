@@ -1,8 +1,7 @@
-# facilita juridico test
- Teste para vaga de emprego da "Facilita Juridico"
+# Facilita Entregas
 
-## Video de apresentação
-[https://www.youtube.com/watch?v=Vo8FAw83RUU](https://www.youtube.com/watch?v=Vo8FAw83RUU)
+## Link de acesso
+[https://facilita-entregas.vercel.app/](https://facilita-entregas.vercel.app/)
 
 ## Tecnologias
 
@@ -37,7 +36,7 @@
 ## DLL
 ```sql
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,  
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     telphone VARCHAR(20) NOT NULL,
@@ -73,4 +72,3 @@ CREATE TABLE users (
 * Modificar o mapa falso para os pontos ficarem mais perto uns dos outros.
 * Adicionar mascaras nos campos de telefone
 * Permitir numeros quebrados para o X e Y.
-* Teria usado o Prisma no Backend mas estava proibido nas regras.
