@@ -9,12 +9,12 @@
     @apply w-full h-full;
     
     .telphone-button {
-      @apply rounded-l-md;
+      @apply rounded-l-lg;
     }
     
     .telphone-input {
-      @apply w-full h-full;
-      @apply rounded-r-md;
+      @apply w-full h-full min-h-[40px];
+      @apply rounded-lg;
       @apply text-sm;
     }
   }
@@ -48,10 +48,10 @@
     }
 
     .coordinates {
-      @apply grid-cols-1;
+      // @apply grid-cols-1;
 
       h2 {
-        @apply col-span-1;
+        // @apply col-span-1;
       }
     }
   }

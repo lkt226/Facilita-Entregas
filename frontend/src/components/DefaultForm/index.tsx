@@ -49,6 +49,7 @@ export default function DefaultForm (props: Props) {
               country={'br'} 
               value={telValue}
               onChange={setTelValue}
+              placeholder="+  55 (21) 99999-9999"
             />
         </Label>
         <Label className={css["email"]} htmlFor="email">
