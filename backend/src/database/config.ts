@@ -4,6 +4,9 @@ dotenv.config();
 import { Client  } from 'pg'
 
 const client = new Client ({
+  ssl: {
+    rejectUnauthorized: false
+  },
   user: process.env.POSTGRES_USER || 'facilita-juridico',
   host: process.env.POSTGRES_HOST || 'localhost',
   password: process.env.POSTGRES_PASSWORD || 'admin12345',
