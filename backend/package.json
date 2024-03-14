@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "vercel build": "tsc",
+    "build": "tsc",
     "start": "ts-node src/index.ts",
+    "start:prod": "node ./dist/index.js",
     "test": "jest"
   },
   "keywords": [],
